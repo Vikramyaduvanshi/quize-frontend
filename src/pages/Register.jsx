@@ -9,7 +9,7 @@ export function Register() {
   let vounceid = useRef();
 let navigate=useNavigate()
  async function handlesubmit(e) {
-    e.preventDefault(); // ✅ prevent default form submission
+    e.preventDefault(); 
     console.log(data)
  let res= await  register(data);
 console.log(res)
@@ -26,7 +26,12 @@ if(res.message === 'success'){
   function handlechange(e) {
     
     let { name, value } = e.target;
-setdata((prev) => ({ ...prev, [name]: value }));
+if(vounceid.current){
+  clearTimeout(vounceid.current)
+}
+    vounceid.current= setTimeout(()=>{
+      setdata((prev) => ({ ...prev, [name]: value }));
+    },500)
    
   }
 
@@ -47,7 +52,7 @@ setdata((prev) => ({ ...prev, [name]: value }));
                 <Field.Label>Email</Field.Label>
                 <Input
                   onChange={handlechange}
-                  value={data.email}
+                  
                   name="email"
                   type="email"
                   required
@@ -71,11 +76,10 @@ setdata((prev) => ({ ...prev, [name]: value }));
           </Card.Footer>
         </Card.Root>
 
-        {/* 🔴 Removed redundant input */}
-        {/* <input type="submit" value="submit" /> */}
+  
       </form>
 
-      {/* 🔴 Not needed: <input type="text" /> */}
+   
 
      </Flex>
     </>

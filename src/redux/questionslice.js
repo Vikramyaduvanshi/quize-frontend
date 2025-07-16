@@ -4,7 +4,7 @@ import axios from "axios"
 
 export let fetchquestion= createAsyncThunk("questions/fetchquestion", async({topic="",page=1, limit=15, difficulty=""}, thunkApi)=>{
 try{
-let res= await axios.get("http://localhost:3000/questions/allquestions", {params:{topic,page,limit,difficulty,}})
+let res= await axios.get("https://quize-app-es62.onrender.com/questions/allquestions", {params:{topic,page,limit,difficulty,}})
 
 return {data:res.data.data, total:res.data.total}
 

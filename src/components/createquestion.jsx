@@ -4,11 +4,11 @@ import { api } from "../Util/api";
 
 export function Creaquestion({ topicid ,settopicid}) {
   const [questiondata, setquestion] = useState({question:"", answer:'', difficulty:""});
-  const timerid = useRef(null);
+
 
   async function handlesubmit(e) {
     e.preventDefault(); 
-
+console.log("handle submit", questiondata)
   let res=  await api.post(`/questions/${topicid}`, questiondata);
   if(res.data.success){
     alert("question uploaded successfully")
@@ -19,38 +19,33 @@ export function Creaquestion({ topicid ,settopicid}) {
   }
 
   function handlechannge(e) {
-    if(timerid.current){
-      clearTimeout(timerid.current);
-    }
-
-    timerid.current = setTimeout(() => {
-        let { value,name } = e.target;  
-      setquestion({...questiondata, [name]:value});
-     
-    }, 1000); 
+    let { value,name } = e.target;  
+  
+ setquestion({...questiondata, [name]:value});
+ 
   }
 
   return (
     <>
       <VStack w="full" maxW="sm" m="5" justifyContent="center" alignItems="center">
-        <Input p="2" css={{ "--focus-color": "lime" }}
+        <Input  p="2" css={{ "--focus-color": "lime" }}
           onChange={handlechannge}
           name="question"
-         
+         value={questiondata.question}
           flex="2"
           placeholder="Enter Question"
         />
         <Input p="2" css={{ "--focus-color": "lime" }}
           onChange={handlechannge}
           name="answer"
-         
+         value={questiondata.answer}
           flex="1"
           placeholder="Enter Answer"
         />
         <Input p="2" css={{ "--focus-color": "lime" }}
           onChange={handlechannge}
           name="difficulty"
-         
+         value={questiondata.difficulty}
           flex="1"
           placeholder="Enter Difficulty"
         />

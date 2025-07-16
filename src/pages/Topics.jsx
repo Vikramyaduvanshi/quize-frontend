@@ -62,7 +62,7 @@ filtertopics.map((v)=>{
         <Card.Root width="-moz-fit-content">
 <Card.Body>
 <Heading size="sm">Topic Name : {v.name}</Heading>
-<Button onClick={()=>settopicid((pre)=>pre==null ? v._id:null)}>{topicid ? "Cancel" :"Add Question"}</Button>
+<Button onClick={()=>settopicid((pre)=>pre==null ? v._id:null)}>{topicid==v._id ? "Cancel" :"Add Question"}</Button>
 {topicid == v._id && <Creaquestion topicid={topicid} settopicid={settopicid}/>}
 </Card.Body>
         </Card.Root>
@@ -77,7 +77,7 @@ topics.map((v)=>{
         <Card.Root justifyContent="center" alignItems="center">
 <Card.Body>
 <Heading size="sm">Topic Name : {v.name}</Heading>
-<Button onClick={()=>settopicid((pre)=>pre==null ? v._id:null)}>{topicid ? "Cancel" :"Add Question"}</Button>
+<Button onClick={()=>settopicid((pre)=>pre==null ? v._id:null)}>{topicid==v._id ? "Cancel" :"Add Question"}</Button>
 {topicid == v._id && <Creaquestion topicid={topicid} settopicid={settopicid}/>}
 </Card.Body>
         </Card.Root>

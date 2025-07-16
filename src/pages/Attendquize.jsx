@@ -69,19 +69,19 @@ if(res.success){
 }
 
 function handlesubmit(id,answer){
+  
 let obj={};
-if(inputref.current.value==answer){
+if(`${inputref.current.trim().toLowerCase()}` == answer.toLowerCase()){
     obj.answerStatus="correct"
 }else{
     obj.answerStatus="incorrect"
 }
 obj.questionId=id
+console.log(obj,inputref.current, answer)
 dispatch(setatemptquestion(obj))
-inputref.current.value=id
-if(inputref.current.value==id){
-    inputref.current.placeholder="disabled"
-}
-inputref.current.value=''
+inputref.current=""
+
+
 }
 
 
@@ -103,7 +103,7 @@ return (
 <Text>Question : {v.question}</Text>
 <HStack gapX="10">
     
-    <Input border="1px solid black" css={{ "--focus-color": "blue" }} placeholder="Enter your answer"  ref={inputref}  />
+    <Input onChange={(e)=>inputref.current=e.target.value} border="1px solid black" css={{ "--focus-color": "blue" }} placeholder="Enter your answer"   />
     
     <Theme p="4" appearance="light" colorPalette="teal">
         <Button variant="surface" onClick={()=>handlesubmit(v._id,v.answer) }>submit</Button>
