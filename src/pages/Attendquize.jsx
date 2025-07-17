@@ -54,7 +54,7 @@ console.log(attempQuestions)
 if(attempQuestions.length !==0) {
 let res=    await api.post("/quizes/addquize", {attempQuestions})
 if(res.success){
-    alert(res.message)
+    alert("Thankyou for attempting quize")
       navigate("/quizes")
 }else{
     alert(res.message)

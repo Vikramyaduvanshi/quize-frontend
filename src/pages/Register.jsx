@@ -62,7 +62,7 @@ if(vounceid.current){
                 <Field.Label>Password</Field.Label>
                 <Input
                   onChange={handlechange}
-                  value={data.password}
+                  
                   name="password"
                   type="password"
                   required
