@@ -27,14 +27,21 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async ({email, password}) => {
-    try {
-     let res= await axios.post("https://quize-app-es62.onrender.com/Users/signup", { email, password });
-     return res.data
-    } catch (e) {
-      console.error("Registration failed", e);
+const register = async ({ email, password }) => {
+  try {
+    const res = await axios.post("https://quize-app-es62.onrender.com/Users/signup", { email, password });
+   
+    return res.data; 
+  } catch (e) {
+  
+
+    if (e.response?.status === 400) {
+      return { message: "User already registered" }; 
     }
-  };
+
+    return { message: "Server error, please try again later" }; 
+  }
+};
 
   const logout = () => {
     setUser(null);

@@ -13,14 +13,13 @@ let navigate=useNavigate()
     console.log(data)
  let res= await  register(data);
 console.log(res)
-if(res.message === 'success'){
-  alert("user created successfully")
- navigate("/")
-  
-}else{
-  alert("somthing error")
-}
 
+if(res.message=="success"){
+  navigate("/login")
+}
+else{
+  alert(res.message)
+}
   }
 
   function handlechange(e) {
