@@ -1,7 +1,9 @@
 import axios  from "axios";
 
 export const api= axios.create({
+ 
     baseURL:"https://quize-app-es62.onrender.com",
+    
 });
 
 

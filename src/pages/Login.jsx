@@ -50,6 +50,8 @@ const Login = () => {
             required
             style={{ width: "100%", padding: ".5rem", borderRadius: "4px", border: "1px solid #ccc" }}
           />
+         <p onClick={()=>navigate("/forgotpassword")} style={{textAlign:"right", cursor:"pointer",}}>Forgot Password</p>
+
         </div>
         <button
           type="submit"

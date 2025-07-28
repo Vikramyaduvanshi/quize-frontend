@@ -13,6 +13,8 @@ import { Profile } from "./pages/Profile"
 import { Fulldetails } from "./pages/fulldetails"
 import { Quizedetails } from "./components/quizedetails"
 import { Attendquize } from "./pages/Attendquize"
+import { Forgotpassword } from "./pages/Forgotpaaaword"
+import { Reset_Password } from "./pages/Reset_password"
 
 function App() {
   return (
@@ -23,7 +25,8 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
+        <Route path="/forgotpassword" element={<Forgotpassword/>}/>
+        <Route path="/reset_password" element={<Reset_Password/>}/>
        
         <Route element={<PrivateRoute />}>
           <Route path="/users" element={<Users/>}/>
@@ -35,6 +38,7 @@ function App() {
           <Route path="/fulldetails/:id" element={<Fulldetails/>}/>
           <Route path="/quizedetails/:id" element={<Quizedetails/>}/>
           <Route path="/attendquize" element={<Attendquize/>}/>
+          
         
         </Route>
       </Routes>
