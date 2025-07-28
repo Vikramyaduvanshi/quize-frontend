@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authcontex";
-import { Button } from "@chakra-ui/react";
+import { Button, Spinner, Text, VStack } from "@chakra-ui/react";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);
+  const { login,loading } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -14,6 +14,17 @@ const Login = () => {
     await login(email, password);
     navigate("/");
   };
+
+
+if(loading){
+   return (
+    <VStack colorPalette="teal">
+      <Spinner color="colorPalette.600" />
+      <Text color="colorPalette.600">Loading...</Text>
+    </VStack>
+  )
+     
+}
 
   return (
     <div

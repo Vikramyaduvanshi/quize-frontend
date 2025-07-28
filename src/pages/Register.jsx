@@ -1,11 +1,11 @@
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../context/authcontex";
-import { Button, Card, Field, Flex, Input, Stack } from "@chakra-ui/react";
+import { Button, Card, Field, Flex, Input, Stack ,Spinner, Text, VStack} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 export function Register() {
   let [data, setdata] = useState({ email: "", password: "" });
-  let { register } = useContext(AuthContext);
+  let { register,loading } = useContext(AuthContext);
   let vounceid = useRef();
 let navigate=useNavigate()
  async function handlesubmit(e) {
@@ -33,6 +33,16 @@ if(vounceid.current){
     },500)
    
   }
+
+
+if(loading){
+  return (
+    <VStack colorPalette="teal">
+      <Spinner color="colorPalette.600" />
+      <Text color="colorPalette.600">Loading...</Text>
+    </VStack>
+  )
+}
 
   return (
     <>
